@@ -1,0 +1,13 @@
+# Uncomment the next line to define a global platform for your project
+use_frameworks!
+platform :ios, '17.0'
+install! 'cocoapods', :warn_for_unused_master_specs_repo => false
+
+target 'Demo' do
+  pod 'MobileVLCKit'
+end
+
+target 'Demo-tvOS' do
+  platform :tvos, '17.0'
+  pod 'TVVLCKit'
+end
