@@ -4,6 +4,7 @@ Package used to provide Service Package Manager to the [official mirror reposito
 ## Frameworks
 - MobileVLCKit
 - TVVLCKit
+- VLCKit
 
 ## Steps to update the package when frameworks receive a new version update
 - In Terminal, set your path into the Demo project folder.
@@ -13,11 +14,7 @@ Package used to provide Service Package Manager to the [official mirror reposito
 - Remove the CocoaPod dependencies on the Demo project by running 'pod deintegrate'. 
 - Still on the same folder, get the checksum value for both by running:
     ```
-        swift package compute-checksum TVVLCKit.xcframework.zip
-    ```
-    
-    ```
-        swift package compute-checksum MobileVLCKit.xcframework.zip
+        swift package compute-checksum VLCKit.xcframework.zip
     ```
 - Update version number and checksum on the package binary target. (eg. `3.6.0` and `5c3169e59f9cce4ba4d6c8b36c51c93c13d6cf0e48d11344efb64bb909e35c6a`)
 - Release new version with this same version number and upload the new frameworks in .zip as attachments in the release.
