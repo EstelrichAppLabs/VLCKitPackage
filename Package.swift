@@ -6,7 +6,10 @@ import PackageDescription
 let package = Package(
     name: "VLCKit",
     platforms: [.iOS(.v17), .tvOS(.v17)],
-    products: [.library(name: "VLCKit", targets: ["VLCKitBridge"])],
+    products: [
+        .library(name: "VLCKit", targets: ["VLCKitStable"]),
+        .library(name: "VLCKitCanary", targets: ["VLCKitCanary"]),
+    ],
     targets: [
         .binaryTarget(
             name: "MobileVLCKit",
@@ -24,13 +27,17 @@ let package = Package(
             checksum: "01c9e647e6dea078e7586242fe23020e5a505e73ca312eac813d0d8198c9dd03"
         ),
         .target(
-            name: "VLCKitBridge",
+            name: "VLCKitStable",
             dependencies: [
                 .target(name: "MobileVLCKit", condition: .when(platforms: [.iOS])),
-                .target(name: "TVVLCKit", condition: .when(platforms: [.tvOS])),
-                "VLCKitBinary"
+                .target(name: "TVVLCKit", condition: .when(platforms: [.tvOS]))
             ],
             path: "Sources/VLCKit"
-        )
+        ),
+        .target(
+            name: "VLCKitCanary",
+            dependencies: ["VLCKitBinary"],
+            path: "Sources/VLCKitCanary"
+        ),
     ]
 )
